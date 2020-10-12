@@ -134,9 +134,9 @@ spec:
         {{- else }}
         emptyDir: {}
         {{- end -}}
-      {{- if .Values.nodeSelector }}
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        {{ toYaml .Values.nodeSelector }}
+{{ toYaml . | indent 8 }}
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
